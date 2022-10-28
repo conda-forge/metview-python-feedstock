@@ -1,6 +1,6 @@
 {% set name = "metview-python" %}
 {% set pypi_name = "metview" %}
-{% set version = "1.13.0" %}
+{% set version = "1.13.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ pypi_name[0] }}/{{ pypi_name }}/{{ pypi_name }}-{{ version }}.tar.gz
-  sha256: 069c64511b86c0de3be9909484e7baefffa2484f0a0428e0c1cddf11fc1916b9
+  sha256: 198c308a83981eb54dbd9a377f0b6506d790818a80545b6dee6788816f85216b
 
 build:
   number: 0
