@@ -7,30 +7,32 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ pypi_name[0] }}/{{ pypi_name }}/{{ pypi_name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ pypi_name[0] }}/{{ pypi_name }}/{{ pypi_name }}-{{ version }}.tar.gz
   sha256: b9a780c3ebdb01cb296878d132b4ef611a501a80010a8577a65c12bec74c5309
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
     - pytest-runner
   run:
     - cffi
     - cfgrib
     - numpy
     - pandas
-    - python >=3.6
+    - python >={{ python_min }}
     - PyYAML
     - requests
     - xarray
 
 test:
+  requires:
+    - python {{ python_min }}
   commands:
     - test -f $(python -c "import site; print(site.getsitepackages()[0])")/metview/__init__.py  # [not win]
 
